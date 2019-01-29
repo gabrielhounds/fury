@@ -24,6 +24,8 @@ function init() {
 	resources 		= PIXI.loader.resources,
 	Sprite 			= PIXI.Sprite;
 
+	var t = TweenMax;
+
 	var stageW = 0
 	var stageH = 0;
 
@@ -145,6 +147,7 @@ function init() {
 
 		$(btn1).click(function(e) {
 			//shoeSequence.gotoAndStop(0);
+			t.set('.hotspot', {opacity : 0});
 
 			if (shoeSequence.currentFrame != 0) {
 				shoeSequence.play();
@@ -152,6 +155,7 @@ function init() {
 				if (shoeSequence.currentFrame === 0) {
 					shoeSequence.stop();
 					log('stop');
+					t.set('.g1', {opacity : 1});
 				}
 			}
 			}
@@ -160,6 +164,7 @@ function init() {
 
 		$(btn2).click(function(e) {
 			//shoeSequence.gotoAndStop(12);
+			t.set('.hotspot', {opacity : 0});
 			if (shoeSequence.currentFrame != 13) {
 				shoeSequence.play();
 				shoeSequence.onFrameChange = function(e) {
@@ -167,6 +172,7 @@ function init() {
 					if (shoeSequence.currentFrame === 13) {
 						shoeSequence.stop();
 						log('stop');
+						t.set('.g2', {opacity : 1});
 					}
 				}
 			}
@@ -174,6 +180,7 @@ function init() {
 		});
 
 		$(btn22).click(function(e) {
+			t.set('.hotspot', {opacity : 0});
 			//shoeSequence.gotoAndStop(12);
 			if (shoeSequence.currentFrame != 28) {
 				shoeSequence.play();
@@ -182,6 +189,7 @@ function init() {
 					if (shoeSequence.currentFrame === 28) {
 						shoeSequence.stop();
 						log('stop');
+						t.set('.g3', {opacity : 1});
 					}
 				}
 			}
