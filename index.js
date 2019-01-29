@@ -40,7 +40,6 @@ function init() {
 	var nav = $('<div>', { id : 'nav' }).appendTo(main);
 	var line = $('<div>', { id : 'line' }).appendTo(nav);
 
-
 	var cta = $('<div>', { id : 'cta' }).appendTo(main);
 
 	var btn1 = $('<div>', { id : 'btn1' , class : 'btn' }).css({ width : '100px' , height : '100px', top : 0, right : 0, 'background-color' : 'red', 'z-index' : 99}).prependTo('body');
@@ -67,10 +66,7 @@ function init() {
 	stageW = app.renderer.view.width;
 	stageH = app.renderer.view.height;
 
-
 	function setUp() {
-
-
 
 		shoeHolder = new PIXI.Container()
 
@@ -142,13 +138,9 @@ function init() {
 		$(shoeContainer).css({ top : '50%', left : '50%' , 'transform' : 'translate(-50%, -50%) scale(0.8)' });
 
 		shoeSequence.animationSpeed = 0.2;
-		//shoeTextures.reverse();
-		//shoeSequence.loop = false;
 
 		$(btn1).click(function(e) {
-			//shoeSequence.gotoAndStop(0);
 			t.set('.hotspot', {opacity : 0});
-
 			if (shoeSequence.currentFrame != 0) {
 				shoeSequence.play();
 				shoeSequence.onFrameChange = function(e) {
@@ -163,7 +155,6 @@ function init() {
 		});
 
 		$(btn2).click(function(e) {
-			//shoeSequence.gotoAndStop(12);
 			t.set('.hotspot', {opacity : 0});
 			if (shoeSequence.currentFrame != 13) {
 				shoeSequence.play();
@@ -181,7 +172,6 @@ function init() {
 
 		$(btn22).click(function(e) {
 			t.set('.hotspot', {opacity : 0});
-			//shoeSequence.gotoAndStop(12);
 			if (shoeSequence.currentFrame != 28) {
 				shoeSequence.play();
 				shoeSequence.onFrameChange = function(e) {
@@ -195,13 +185,6 @@ function init() {
 			}
 
 		});
-
-
-
-		//shoeSequence.play();
-
-
-
 
 	}
 
@@ -243,10 +226,7 @@ function init() {
       	'fury_29.png'
       ]).on('progress', loadProgressHandler).load(setUp);
 	}
-
 	initLoader();
-
-
 }
 
 
