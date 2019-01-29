@@ -37,149 +37,220 @@ function init() {
 	var shoeContainer = $('<div>', { id : 'shoeContainer' }).css({}).appendTo(main);
 	var logo = $('<div>', { id : 'logo' }).appendTo(main);
 	var logo_2 = $('<div>', { id : 'logo_2' }).appendTo(main);
-	var nav = $('<div>', { id : 'nav' }).appendTo(main);
-	var line = $('<div>', { id : 'line' }).appendTo(nav);
-
 	var cta = $('<div>', { id : 'cta' }).appendTo(main);
 
-	var btn1 = $('<div>', { id : 'btn1' , class : 'btn' }).css({ width : '100px' , height : '100px', top : 0, right : 0, 'background-color' : 'red', 'z-index' : 99}).prependTo('body');
-	var btn2 = $('<div>', { id : 'btn2' , class : 'btn' }).css({ width : '100px' , height : '100px', top : '100px', right : 0, 'background-color' : 'blue', 'z-index' : 98}).prependTo('body');
-	var btn22 = $('<div>', { id : 'btn2' , class : 'btn' }).css({ width : '100px' , height : '100px', top : '200px', right : 0, 'background-color' : 'green', 'z-index' : 97}).prependTo('body');
+	var nav  = $('<div>', 	{ id : 'nav' 	}).appendTo(main);
+	var line = $('<div>', 	{ id : 'line' 	}).appendTo(nav);
+
+	var hit1 = $('<div>', 	{ id : 'hit1', class : 'hit' }).appendTo(nav);
+	var hit2 = $('<div>', 	{ id : 'hit2', class : 'hit' }).appendTo(nav);
+	var hit3 = $('<div>', 	{ id : 'hit3', class : 'hit' }).appendTo(nav);
 
 	var spot1 = $('<div>', { id : 'spot1' , class : 'hotspot g1 s1' 	}).prependTo(shoeContainer);
 	var spot2 = $('<div>', { id : 'spot2' , class : 'hotspot g1 s2' 	}).prependTo(shoeContainer);
-	var spot3 = $('<div>', { id : 'spot3' , class : 'hotspot g1 s3' }).prependTo(shoeContainer);
+	var spot3 = $('<div>', { id : 'spot3' , class : 'hotspot g1 s3'     }).prependTo(shoeContainer);
 
-	var spot4 = $('<div>', { id : 'spot4' , class : 'hotspot g2 s1 ' 	}).prependTo(shoeContainer);
-	var spot5 = $('<div>', { id : 'spot5' , class : 'hotspot g2 s2 ' 	}).prependTo(shoeContainer);
+	var spot4 = $('<div>', { id : 'spot4' , class : 'hotspot g2 s1' 	}).prependTo(shoeContainer);
+	var spot5 = $('<div>', { id : 'spot5' , class : 'hotspot g2 s2' 	}).prependTo(shoeContainer);
 	var spot6 = $('<div>', { id : 'spot6' , class : 'hotspot g2 s3' 	}).prependTo(shoeContainer);
 
-	var spot7 	= $('<div>', { id : 'spot7' , class : 'hotspot g3 s1 ' 	}).prependTo(shoeContainer);
-	var spot8 	= $('<div>', { id : 'spot8' , class : 'hotspot g3 s2 ' 	}).prependTo(shoeContainer);
-	var spot9 	= $('<div>', { id : 'spot9' , class : 'hotspot g3 s3' 	}).prependTo(shoeContainer);
-	var spot10 	= $('<div>', { id : 'spot10' ,class : 'hotspot g3 s4' 	}).prependTo(shoeContainer);
+	var spot7 	= $('<div>', { id : 'spot7'  , class : 'hotspot g3 s1' 	}).prependTo(shoeContainer);
+	var spot8 	= $('<div>', { id : 'spot8'  , class : 'hotspot g3 s2' 	}).prependTo(shoeContainer);
+	var spot9 	= $('<div>', { id : 'spot9'  , class : 'hotspot g3 s3' 	}).prependTo(shoeContainer);
+	var spot10 	= $('<div>', { id : 'spot10' , class : 'hotspot g3 s4' 	}).prependTo(shoeContainer);
 
-	app = new Application({width : 1120, height : 840, legacy : true});
-	app.renderer.backgroundColor = 0x1e354f;
+	var txt_1_1 = $('<div>', { id : 'txt_1_1', class : 'txt tg1 c1' 	}).prependTo(shoeContainer);
+	var txt_1_2 = $('<div>', { id : 'txt_1_2', class : 'txt tg1 c2' 	}).prependTo(shoeContainer);
+	var txt_1_3 = $('<div>', { id : 'txt_1_3', class : 'txt tg1 c3' 	}).prependTo(shoeContainer);
+
+	var txt_2_1 = $('<div>', { id : 'txt_2_1', class : 'txt tg2 c1' 	}).prependTo(shoeContainer);
+	var txt_2_2 = $('<div>', { id : 'txt_2_2', class : 'txt tg2 c2' 	}).prependTo(shoeContainer);
+	var txt_2_3 = $('<div>', { id : 'txt_2_3', class : 'txt tg2 c3' 	}).prependTo(shoeContainer);
+
+	var txt_3_1 = $('<div>', { id : 'txt_3_1', class : 'txt tg3 c1' 	}).prependTo(shoeContainer);
+	var txt_3_2 = $('<div>', { id : 'txt_3_2', class : 'txt tg3 c2' 	}).prependTo(shoeContainer);
+	var txt_3_3 = $('<div>', { id : 'txt_3_3', class : 'txt tg3 c3' 	}).prependTo(shoeContainer);
+	var txt_3_4 = $('<div>', { id : 'txt_3_4', class : 'txt tg3 c4' 	}).prependTo(shoeContainer);
+
+	app = new Application({width : 1120, height : 840, legacy : true, transparent: true});
 	$(app.view).appendTo(shoeContainer);
 
 	stageW = app.renderer.view.width;
 	stageH = app.renderer.view.height;
 
-	function setUp() {
+	t.set(['.g2', '.g3'], {autoAlpha:0});
 
-		shoeHolder = new PIXI.Container()
+	function handleShoe() {
 
-		shoeTextures = [
-			resources['fury_01.png'].texture,
-			resources['fury_02.png'].texture,
-			resources['fury_03.png'].texture,
-			resources['fury_04.png'].texture,
-			resources['fury_05.png'].texture,
-			resources['fury_06.png'].texture,
-			resources['fury_07.png'].texture,
-			resources['fury_08.png'].texture,
-			resources['fury_09.png'].texture,
-			resources['fury_10.png'].texture,
-			resources['fury_11.png'].texture,
-			resources['fury_12.png'].texture,
-			resources['fury_13.png'].texture,
+		function handleHotspot(e) {
 
-			resources['fury_14.png'].texture,
-			resources['fury_15.png'].texture,
-			resources['fury_16.png'].texture,
-			resources['fury_17.png'].texture,
-			resources['fury_18.png'].texture,
-			resources['fury_19.png'].texture,
-			resources['fury_20.png'].texture,
-			resources['fury_21.png'].texture,
-			resources['fury_22.png'].texture,
-			resources['fury_23.png'].texture,
-			resources['fury_24.png'].texture,
-			resources['fury_25.png'].texture,
-			resources['fury_26.png'].texture,
-			resources['fury_27.png'].texture,
-			resources['fury_28.png'].texture,
-			resources['fury_29.png'].texture,
+			t.to('.txt', 0.4, {opacity:0, ease:Power2.easeOut});
+			t.to('.hotspot', 0.4, {rotation:'0deg', ease:Power2.easeOut});
 
-			resources['fury_28.png'].texture,
-			resources['fury_27.png'].texture,
-			resources['fury_26.png'].texture,
-			resources['fury_25.png'].texture,
-			resources['fury_24.png'].texture,
-			resources['fury_23.png'].texture,
-			resources['fury_22.png'].texture,
-			resources['fury_21.png'].texture,
-			resources['fury_20.png'].texture,
-			resources['fury_19.png'].texture,
-			resources['fury_18.png'].texture,
-			resources['fury_17.png'].texture,
-			resources['fury_16.png'].texture,
-			resources['fury_15.png'].texture,
-			resources['fury_14.png'].texture,
-			resources['fury_13.png'].texture,
-			resources['fury_12.png'].texture,
-			resources['fury_11.png'].texture,
-			resources['fury_10.png'].texture,
-			resources['fury_09.png'].texture,
-			resources['fury_08.png'].texture,
-			resources['fury_07.png'].texture,
-			resources['fury_06.png'].texture,
-			resources['fury_05.png'].texture,
-			resources['fury_04.png'].texture,
-			resources['fury_03.png'].texture,
-			resources['fury_02.png'].texture,
-		];
-		shoeSequence = new PIXI.extras.AnimatedSprite(shoeTextures);
+			switch (e) {
 
-		shoeHolder.addChild(shoeSequence);
-		app.stage.addChild(shoeHolder);
+				case 'spot1':
+					t.to('#spot1', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+					t.to(txt_1_1, 	0.4, 	{opacity:1, ease:Power2.easeOut});
+					t.from(txt_1_1, 0.4, 	{y:'-=20', ease:Power2.easeOut});
+				break;
 
-		$(shoeContainer).css({ top : '50%', left : '50%' , 'transform' : 'translate(-50%, -50%) scale(0.8)' });
+				case 'spot2':
+					t.to('#spot2', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+					t.to(txt_1_2, 	0.2, {opacity:1, ease:Power2.easeOut});
+					t.from(txt_1_2, 0.4, {y:'+=20', ease:Power2.easeOut});
+				break;
 
-		shoeSequence.animationSpeed = 0.2;
+				case 'spot3':
+					t.to('#spot3', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+					t.to(txt_1_3, 	0.2, {opacity:1, ease:Power2.easeOut});
+					t.from(txt_1_3, 0.4, {y:'-=20', ease:Power2.easeOut});
+				break;
 
-		$(btn1).click(function(e) {
-			t.set('.hotspot', {opacity : 0});
-			if (shoeSequence.currentFrame != 0) {
-				shoeSequence.play();
-				shoeSequence.onFrameChange = function(e) {
-				if (shoeSequence.currentFrame === 0) {
-					shoeSequence.stop();
-					log('stop');
-					t.set('.g1', {opacity : 1});
-				}
+				case 'spot4':
+					t.to('#spot4', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+					t.to(txt_2_1, 	0.2, {opacity:1, ease:Power2.easeOut});
+					t.from(txt_2_1, 0.4, {y:'-=20', ease:Power2.easeOut});
+				break;
+
+				case 'spot5':
+					t.to('#spot5', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+					t.to(txt_2_2, 	0.2, {opacity:1, ease:Power2.easeOut});
+					t.from(txt_2_2, 0.4, {y:'-=20', ease:Power2.easeOut});
+				break;
+
+				case 'spot6':
+					t.to('#spot6', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+					t.to(txt_2_3, 	0.2, {opacity:1, ease:Power2.easeOut});
+					t.from(txt_2_3, 0.4, {y:'+=20', ease:Power2.easeOut});
+				break;
+
+				case 'spot7':
+					t.to('#spot7', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+					t.to(txt_3_1, 	0.2, {opacity:1, ease:Power2.easeOut});
+					t.from(txt_3_1, 0.4, {y:'-=20', ease:Power2.easeOut});
+				break;
+
+				case 'spot8':
+					t.to('#spot8', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+					t.to(txt_3_2, 	0.2, {opacity:1, ease:Power2.easeOut});
+					t.from(txt_3_2, 0.4, {y:'-=20', ease:Power2.easeOut});
+				break;
+
+				case 'spot9':
+					t.to('#spot9', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+					t.to(txt_3_3, 	0.2, {opacity:1, ease:Power2.easeOut});
+					t.from(txt_3_3, 0.4, {y:'+=20', ease:Power2.easeOut});
+				break;
+
+				case 'spot10':
+					t.to('#spot10', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+					t.to(txt_3_4, 	0.2, {opacity:1, ease:Power2.easeOut});
+					t.from(txt_3_4, 0.4, {y:'+=20', ease:Power2.easeOut});
+				break;
 			}
-			}
+		}
 
+		$('.hotspot').mouseover(function(e) {
+			t.to(this, 0.4, {scale:1.5, ease:Elastic.easeOut});
+			//t.to(this, 0.4, {rotation:'180deg', ease:Power2.easeOut});
+		}).mouseout(function(e) {
+			t.to(this, 0.9, {scale:1.0, ease:Elastic.easeOut});
+			//t.to(this, 0.4, {rotation:'0deg', ease:Power2.easeOut});
+		}).click(function(e) {
+			log(e.target.id);
+			handleHotspot(e.target.id);
+			//t.to(this, 0.2, {rotation:'135deg', ease:Power2.easeOut});
 		});
 
-		$(btn2).click(function(e) {
-			t.set('.hotspot', {opacity : 0});
-			if (shoeSequence.currentFrame != 13) {
-				shoeSequence.play();
-				shoeSequence.onFrameChange = function(e) {
-					log(shoeSequence.currentFrame);
-					if (shoeSequence.currentFrame === 13) {
-						shoeSequence.stop();
-						log('stop');
-						t.set('.g2', {opacity : 1});
+		$(hit1).click(function(e) {
+			if (shoeSequence.currentFrame !== 0) {
+				t.to('.hotspot', 0.3, {autoAlpha : 0, scale:0.0, rotation:'0deg', ease:Power3.easeOut});
+				t.to('.txt', 0.4, {opacity:0, ease:Power2.easeOut});
+				if (shoeSequence.currentFrame === 12) {
+					shoeSequence.gotoAndStop(44);
+					shoeSequence.play();
+					shoeSequence.onFrameChange = function(e) {
+						if (shoeSequence.currentFrame === 0) {
+							shoeSequence.stop();
+
+							t.staggerTo(['#spot1', '#spot2', '#spot3'], 0.7, {autoAlpha : 1, scale:1.0, ease:Elastic.easeOut}, 0.05);
+
+							shoeSequence.onFrameChange = null;
+						}
+					}
+				} else if (shoeSequence.currentFrame === 28) {
+					shoeSequence.play();
+					shoeSequence.onFrameChange = function(e) {
+						if (shoeSequence.currentFrame === 0) {
+							shoeSequence.stop();
+
+							t.staggerTo(['#spot1', '#spot2', '#spot3'], 0.7, {autoAlpha : 1, scale:1.0, ease:Elastic.easeOut}, 0.05);
+
+							shoeSequence.onFrameChange = null;
+						}
 					}
 				}
 			}
 
 		});
 
-		$(btn22).click(function(e) {
-			t.set('.hotspot', {opacity : 0});
+		$(hit2).click(function(e) {
+			if (shoeSequence.currentFrame != 12) {
+				t.to('.hotspot', 0.3, {autoAlpha : 0, scale:0.0, ease:Power3.easeOut});
+				t.to('.txt', 0.4, {opacity:0, ease:Power2.easeOut});
+				if (shoeSequence.currentFrame === 0) {
+					shoeSequence.play();
+					shoeSequence.onFrameChange = function(e) {
+						if (shoeSequence.currentFrame === 12) {
+							shoeSequence.stop();
+
+							t.staggerTo(['#spot4', '#spot5', '#spot6'], 0.7, {autoAlpha : 1, scale:1.0, ease:Elastic.easeOut}, 0.05);
+
+							shoeSequence.onFrameChange = null;
+						}
+					}
+				} else if (shoeSequence.currentFrame === 28) {
+					shoeSequence.play();
+					shoeSequence.onFrameChange = function(e) {
+						if (shoeSequence.currentFrame === 44) {
+							shoeSequence.stop();
+							shoeSequence.gotoAndStop(12);
+
+							t.staggerTo(['#spot4', '#spot5', '#spot6'], 0.7, {autoAlpha : 1, scale:1.0, ease:Elastic.easeOut}, 0.05);
+
+							shoeSequence.onFrameChange = null;
+						}
+					}
+				}
+			}
+		});
+
+		$(hit3).click(function(e) {
 			if (shoeSequence.currentFrame != 28) {
-				shoeSequence.play();
-				shoeSequence.onFrameChange = function(e) {
-					log(shoeSequence.currentFrame);
-					if (shoeSequence.currentFrame === 28) {
-						shoeSequence.stop();
-						log('stop');
-						t.set('.g3', {opacity : 1});
+				t.to('.hotspot', 0.3, {autoAlpha : 0, scale:0.0, ease:Power3.easeOut});
+				t.to('.txt', 0.4, {opacity:0, ease:Power2.easeOut});
+				if (shoeSequence.currentFrame === 0) {
+					shoeSequence.play();
+					shoeSequence.onFrameChange = function(e) {
+						if (shoeSequence.currentFrame === 28) {
+							shoeSequence.stop();
+
+							t.staggerTo(['#spot7', '#spot8', '#spot9', '#spot10'], 0.7, {autoAlpha : 1, scale:1.0, ease:Elastic.easeOut}, 0.05);
+
+							shoeSequence.onFrameChange = null;
+						}
+					}
+				} else if (shoeSequence.currentFrame === 12) {
+					shoeSequence.play();
+					shoeSequence.onFrameChange = function(e) {
+						if (shoeSequence.currentFrame === 28) {
+							shoeSequence.stop();
+
+							t.staggerTo(['#spot7', '#spot8', '#spot9', '#spot10'], 0.7, {autoAlpha : 1, scale:1.0, ease:Elastic.easeOut}, 0.05);
+
+							shoeSequence.onFrameChange = null;
+						}
 					}
 				}
 			}
@@ -187,6 +258,84 @@ function init() {
 		});
 
 	}
+
+	function setUp() {
+
+		shoeHolder = new PIXI.Container()
+
+		shoeTextures = [
+			resources['fury_00.png'].texture, // 0
+			resources['fury_01.png'].texture, // 0
+			resources['fury_02.png'].texture,
+			resources['fury_03.png'].texture,
+			resources['fury_04.png'].texture,
+			resources['fury_05.png'].texture,
+			resources['fury_06.png'].texture, // 5
+			resources['fury_07.png'].texture,
+			resources['fury_08.png'].texture,
+			resources['fury_09.png'].texture,
+			resources['fury_10.png'].texture,
+			resources['fury_11.png'].texture, // 10
+			resources['fury_12.png'].texture,
+			//
+			resources['fury_13.png'].texture, // 12
+			resources['fury_14.png'].texture, // 13
+			resources['fury_15.png'].texture,
+			resources['fury_16.png'].texture, // 15
+			resources['fury_17.png'].texture,
+			resources['fury_18.png'].texture,
+			resources['fury_19.png'].texture,
+			resources['fury_20.png'].texture,
+			resources['fury_21.png'].texture, // 20
+			resources['fury_22.png'].texture,
+			resources['fury_23.png'].texture,
+			resources['fury_24.png'].texture,
+			resources['fury_25.png'].texture,
+			resources['fury_26.png'].texture, // 25
+			resources['fury_27.png'].texture,
+			resources['fury_28.png'].texture, // 28
+			//
+			resources['fury_27.png'].texture, // 30
+			resources['fury_26.png'].texture,
+			resources['fury_25.png'].texture,
+			resources['fury_24.png'].texture,
+			resources['fury_23.png'].texture,
+			resources['fury_22.png'].texture, // 35
+			resources['fury_21.png'].texture,
+			resources['fury_20.png'].texture,
+			resources['fury_19.png'].texture,
+			resources['fury_18.png'].texture,
+			resources['fury_17.png'].texture, // 40
+			resources['fury_16.png'].texture,
+			resources['fury_15.png'].texture,
+			resources['fury_14.png'].texture,
+			resources['fury_13.png'].texture, // 44
+			resources['fury_12.png'].texture, // 45
+			resources['fury_11.png'].texture,
+			resources['fury_10.png'].texture,
+			resources['fury_09.png'].texture,
+			resources['fury_08.png'].texture,
+			resources['fury_07.png'].texture, // 50
+			resources['fury_06.png'].texture,
+			resources['fury_05.png'].texture,
+			resources['fury_04.png'].texture,
+			resources['fury_03.png'].texture,
+			resources['fury_02.png'].texture, // 50
+			resources['fury_01.png'].texture, // 50
+
+		];
+
+		shoeSequence = new PIXI.extras.AnimatedSprite(shoeTextures);
+		shoeHolder.addChild(shoeSequence);
+		app.stage.addChild(shoeHolder);
+		//shoeSequence.loop = false;
+		$(shoeContainer).css({ top : '50%', left : '50%' , 'transform' : 'translate(-50%, -50%) scale(0.8)' });
+		shoeSequence.animationSpeed = 0.2;
+
+		handleShoe();
+
+
+	} // SETUP
 
 	function loadProgressHandler() {
 		//loadingText.setText( 'LOADING ' + Math.round(loader.progress) + '%');
@@ -194,6 +343,7 @@ function init() {
 
 	function initLoader() {
       loader.add([
+	  	'fury_00.png',
       	'fury_01.png',
       	'fury_02.png',
       	'fury_03.png',
@@ -206,8 +356,8 @@ function init() {
       	'fury_10.png',
       	'fury_11.png',
       	'fury_12.png',
-      	'fury_13.png',
 
+      	'fury_13.png',
       	'fury_14.png',
       	'fury_15.png',
       	'fury_16.png',
@@ -223,7 +373,6 @@ function init() {
       	'fury_26.png',
       	'fury_27.png',
       	'fury_28.png',
-      	'fury_29.png'
       ]).on('progress', loadProgressHandler).load(setUp);
 	}
 	initLoader();
