@@ -42,9 +42,13 @@ function init() {
 	var nav  = $('<div>', 	{ id : 'nav' 	}).appendTo(main);
 	var line = $('<div>', 	{ id : 'line' 	}).appendTo(nav);
 
-	var hit1 = $('<div>', 	{ id : 'hit1', class : 'hit' }).appendTo(nav);
+	var hit1 = $('<div>', 	{ id : 'hit1', class : 'hit active' }).appendTo(nav);
 	var hit2 = $('<div>', 	{ id : 'hit2', class : 'hit' }).appendTo(nav);
 	var hit3 = $('<div>', 	{ id : 'hit3', class : 'hit' }).appendTo(nav);
+
+	var hitTxt1 = $('<div>', { id : 'hitTxt1', class : 'hitTxt active' }).appendTo(nav);
+	var hitTxt2 = $('<div>', { id : 'hitTxt2', class : 'hitTxt' }).appendTo(nav);
+	var hitTxt3 = $('<div>', { id : 'hitTxt3', class : 'hitTxt' }).appendTo(nav);
 
 	var spot1 = $('<div>', { id : 'spot1' , class : 'hotspot g1 s1' 	}).prependTo(shoeContainer);
 	var spot2 = $('<div>', { id : 'spot2' , class : 'hotspot g1 s2' 	}).prependTo(shoeContainer);
@@ -78,6 +82,11 @@ function init() {
 	stageW = app.renderer.view.width;
 	stageH = app.renderer.view.height;
 
+	var _width = window.innerWidth;
+	var _height = window.innerHeight;
+
+	log(_width);
+
 	t.set(['.g2', '.g3'], {autoAlpha:0});
 
 	function handleShoe() {
@@ -87,66 +96,157 @@ function init() {
 			t.to('.txt', 0.4, {opacity:0, ease:Power2.easeOut});
 			t.to('.hotspot', 0.4, {rotation:'0deg', ease:Power2.easeOut});
 
+
 			switch (e) {
 
 				case 'spot1':
-					t.to('#spot1', 0.2, {rotation:'135deg', ease:Power2.easeOut});
-					t.to(txt_1_1, 	0.4, 	{opacity:1, ease:Power2.easeOut});
-					t.from(txt_1_1, 0.4, 	{y:'-=20', ease:Power2.easeOut});
+					if ( $('#spot1').hasClass('active') ) {
+						$('#spot1').removeClass('active');
+						$(txt_1_1).removeClass('active');
+					} else {
+						$('.hotspot').removeClass('active');
+						$('.txt').removeClass('active');
+						$('#spot1').addClass('active');
+						$(txt_1_1).addClass('active');
+						t.to('#spot1', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+						t.to(txt_1_1, 	0.4, 	{opacity:1, ease:Power2.easeOut});
+						t.from(txt_1_1, 0.4, 	{y:'-=20', ease:Power2.easeOut});
+					}
 				break;
 
 				case 'spot2':
-					t.to('#spot2', 0.2, {rotation:'135deg', ease:Power2.easeOut});
-					t.to(txt_1_2, 	0.2, {opacity:1, ease:Power2.easeOut});
-					t.from(txt_1_2, 0.4, {y:'+=20', ease:Power2.easeOut});
+					if ( $('#spot2').hasClass('active') ) {
+						$('#spot2').removeClass('active');
+						$(txt_1_1).removeClass('active');
+					} else {
+						$('.hotspot').removeClass('active');
+						$('.txt').removeClass('active');
+						$('#spot2').addClass('active');
+						$(txt_1_2).addClass('active');
+						t.to('#spot2', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+						t.to(txt_1_2, 	0.2, {opacity:1, ease:Power2.easeOut});
+						t.from(txt_1_2, 0.4, {y:'+=20', ease:Power2.easeOut});
+					}
 				break;
 
 				case 'spot3':
-					t.to('#spot3', 0.2, {rotation:'135deg', ease:Power2.easeOut});
-					t.to(txt_1_3, 	0.2, {opacity:1, ease:Power2.easeOut});
-					t.from(txt_1_3, 0.4, {y:'-=20', ease:Power2.easeOut});
+					if ( $('#spot3').hasClass('active') ) {
+						$('#spot3').removeClass('active');
+						$(txt_1_3).removeClass('active');
+					} else {
+						$('.hotspot').removeClass('active');
+						$('.txt').removeClass('active');
+						$('#spot3').addClass('active');
+						$(txt_1_3).addClass('active');
+						t.to('#spot3', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+						t.to(txt_1_3, 	0.2, {opacity:1, ease:Power2.easeOut});
+						t.from(txt_1_3, 0.4, {y:'-=20', ease:Power2.easeOut});
+					}
 				break;
 
 				case 'spot4':
-					t.to('#spot4', 0.2, {rotation:'135deg', ease:Power2.easeOut});
-					t.to(txt_2_1, 	0.2, {opacity:1, ease:Power2.easeOut});
-					t.from(txt_2_1, 0.4, {y:'-=20', ease:Power2.easeOut});
+					if ( $('#spot4').hasClass('active') ) {
+						$('#spot4').removeClass('active');
+						$(txt_2_1).removeClass('active');
+					} else {
+						$('.hotspot').removeClass('active');
+						$('.txt').removeClass('active');
+						$('#spot4').addClass('active');
+						$(txt_2_1).addClass('active');
+						t.to('#spot4', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+						t.to(txt_2_1, 	0.2, {opacity:1, ease:Power2.easeOut});
+						t.from(txt_2_1, 0.4, {y:'-=20', ease:Power2.easeOut});
+					}
 				break;
 
 				case 'spot5':
-					t.to('#spot5', 0.2, {rotation:'135deg', ease:Power2.easeOut});
-					t.to(txt_2_2, 	0.2, {opacity:1, ease:Power2.easeOut});
-					t.from(txt_2_2, 0.4, {y:'-=20', ease:Power2.easeOut});
+					if ( $('#spot5').hasClass('active') ) {
+						$('#spot5').removeClass('active');
+						$(txt_2_2).removeClass('active');
+					} else {
+						$('.hotspot').removeClass('active');
+						$('.txt').removeClass('active');
+						$('#spot5').addClass('active');
+						$(txt_2_2).addClass('active');
+						t.to('#spot5', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+						t.to(txt_2_2, 	0.2, {opacity:1, ease:Power2.easeOut});
+						t.from(txt_2_2, 0.4, {y:'-=20', ease:Power2.easeOut});
+					}
 				break;
 
 				case 'spot6':
-					t.to('#spot6', 0.2, {rotation:'135deg', ease:Power2.easeOut});
-					t.to(txt_2_3, 	0.2, {opacity:1, ease:Power2.easeOut});
-					t.from(txt_2_3, 0.4, {y:'+=20', ease:Power2.easeOut});
+					if ( $('#spot6').hasClass('active') ) {
+						$('#spot6').removeClass('active');
+						$(txt_2_3).removeClass('active');
+					} else {
+						$('.hotspot').removeClass('active');
+						$('.txt').removeClass('active');
+						$('#spot6').addClass('active');
+						$(txt_2_3).addClass('active');
+						t.to('#spot6', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+						t.to(txt_2_3, 	0.2, {opacity:1, ease:Power2.easeOut});
+						t.from(txt_2_3, 0.4, {y:'+=20', ease:Power2.easeOut});
+					}
 				break;
 
 				case 'spot7':
-					t.to('#spot7', 0.2, {rotation:'135deg', ease:Power2.easeOut});
-					t.to(txt_3_1, 	0.2, {opacity:1, ease:Power2.easeOut});
-					t.from(txt_3_1, 0.4, {y:'-=20', ease:Power2.easeOut});
+					if ( $('#spot7').hasClass('active') ) {
+						$('#spot7').removeClass('active');
+						$(txt_3_1).removeClass('active');
+					} else {
+						$('.hotspot').removeClass('active');
+						$('.txt').removeClass('active');
+						$('#spot7').addClass('active');
+						$(txt_3_1).addClass('active');
+						t.to('#spot7', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+						t.to(txt_3_1, 	0.2, {opacity:1, ease:Power2.easeOut});
+						t.from(txt_3_1, 0.4, {y:'-=20', ease:Power2.easeOut});
+					}
 				break;
 
 				case 'spot8':
-					t.to('#spot8', 0.2, {rotation:'135deg', ease:Power2.easeOut});
-					t.to(txt_3_2, 	0.2, {opacity:1, ease:Power2.easeOut});
-					t.from(txt_3_2, 0.4, {y:'-=20', ease:Power2.easeOut});
+					if ( $('#spot8').hasClass('active') ) {
+						$('#spot8').removeClass('active');
+						$(txt_3_2).removeClass('active');
+					} else {
+						$('.hotspot').removeClass('active');
+						$('.txt').removeClass('active');
+						$('#spot8').addClass('active');
+						$(txt_3_2).addClass('active');
+						t.to('#spot8', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+						t.to(txt_3_2, 	0.2, {opacity:1, ease:Power2.easeOut});
+						t.from(txt_3_2, 0.4, {y:'-=20', ease:Power2.easeOut});
+					}
 				break;
 
 				case 'spot9':
-					t.to('#spot9', 0.2, {rotation:'135deg', ease:Power2.easeOut});
-					t.to(txt_3_3, 	0.2, {opacity:1, ease:Power2.easeOut});
-					t.from(txt_3_3, 0.4, {y:'+=20', ease:Power2.easeOut});
+					if ( $('#spot9').hasClass('active') ) {
+						$('#spot9').removeClass('active');
+						$(txt_3_3).removeClass('active');
+					} else {
+						$('.hotspot').removeClass('active');
+						$('.txt').removeClass('active');
+						$('#spot9').addClass('active');
+						$(txt_3_3).addClass('active');
+						t.to('#spot9', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+						t.to(txt_3_3, 	0.2, {opacity:1, ease:Power2.easeOut});
+						t.from(txt_3_3, 0.4, {y:'+=20', ease:Power2.easeOut});
+					}
 				break;
 
 				case 'spot10':
-					t.to('#spot10', 0.2, {rotation:'135deg', ease:Power2.easeOut});
-					t.to(txt_3_4, 	0.2, {opacity:1, ease:Power2.easeOut});
-					t.from(txt_3_4, 0.4, {y:'+=20', ease:Power2.easeOut});
+					if ( $('#spot10').hasClass('active') ) {
+						$('#spot10').removeClass('active');
+						$(txt_3_4).removeClass('active');
+					} else {
+						$('.hotspot').removeClass('active');
+						$('.txt').removeClass('active');
+						$('#spot10').addClass('active');
+						$(txt_3_4).addClass('active');
+						t.to('#spot10', 0.2, {rotation:'135deg', ease:Power2.easeOut});
+						t.to(txt_3_4, 	0.2, {opacity:1, ease:Power2.easeOut});
+						t.from(txt_3_4, 0.4, {y:'+=20', ease:Power2.easeOut});
+					}
 				break;
 			}
 		}
@@ -158,13 +258,20 @@ function init() {
 			t.to(this, 0.9, {scale:1.0, ease:Elastic.easeOut});
 			//t.to(this, 0.4, {rotation:'0deg', ease:Power2.easeOut});
 		}).click(function(e) {
-			log(e.target.id);
+			//log(e.target.id);
 			handleHotspot(e.target.id);
 			//t.to(this, 0.2, {rotation:'135deg', ease:Power2.easeOut});
 		});
 
 		$(hit1).click(function(e) {
 			if (shoeSequence.currentFrame !== 0) {
+				$('.hit').removeClass('active');
+				$('.hitTxt').removeClass('active');
+				$(hit1).addClass('active');
+
+				t.to(hitTxt1, 0.3, {y:'-=20', opacity:0, ease:Power3.easeOut, onComplete:function(){ $(hitTxt1).addClass('active'); } });
+				t.to(hitTxt1, 0.3, {y:'+=20', opacity:1, ease:Back.easeOut, delay:'0.3'});
+
 				t.to('.hotspot', 0.3, {autoAlpha : 0, scale:0.0, rotation:'0deg', ease:Power3.easeOut});
 				t.to('.txt', 0.4, {opacity:0, ease:Power2.easeOut});
 				if (shoeSequence.currentFrame === 12) {
@@ -173,9 +280,7 @@ function init() {
 					shoeSequence.onFrameChange = function(e) {
 						if (shoeSequence.currentFrame === 0) {
 							shoeSequence.stop();
-
 							t.staggerTo(['#spot1', '#spot2', '#spot3'], 0.7, {autoAlpha : 1, scale:1.0, ease:Elastic.easeOut}, 0.05);
-
 							shoeSequence.onFrameChange = null;
 						}
 					}
@@ -184,9 +289,7 @@ function init() {
 					shoeSequence.onFrameChange = function(e) {
 						if (shoeSequence.currentFrame === 0) {
 							shoeSequence.stop();
-
 							t.staggerTo(['#spot1', '#spot2', '#spot3'], 0.7, {autoAlpha : 1, scale:1.0, ease:Elastic.easeOut}, 0.05);
-
 							shoeSequence.onFrameChange = null;
 						}
 					}
@@ -197,6 +300,14 @@ function init() {
 
 		$(hit2).click(function(e) {
 			if (shoeSequence.currentFrame != 12) {
+				$('.hit').removeClass('active');
+				$('.hitTxt').removeClass('active');
+				$(hit2).addClass('active');
+				//$(hitTxt2).addClass('active');
+
+				t.to(hitTxt2, 0.3, {y:'-=20', opacity:0, ease:Power3.easeOut, onComplete:function(){ $(hitTxt2).addClass('active'); } });
+				t.to(hitTxt2, 0.3, {y:'+=20', opacity:1, ease:Back.easeOut, delay:'0.3'});
+
 				t.to('.hotspot', 0.3, {autoAlpha : 0, scale:0.0, ease:Power3.easeOut});
 				t.to('.txt', 0.4, {opacity:0, ease:Power2.easeOut});
 				if (shoeSequence.currentFrame === 0) {
@@ -204,9 +315,7 @@ function init() {
 					shoeSequence.onFrameChange = function(e) {
 						if (shoeSequence.currentFrame === 12) {
 							shoeSequence.stop();
-
 							t.staggerTo(['#spot4', '#spot5', '#spot6'], 0.7, {autoAlpha : 1, scale:1.0, ease:Elastic.easeOut}, 0.05);
-
 							shoeSequence.onFrameChange = null;
 						}
 					}
@@ -216,9 +325,7 @@ function init() {
 						if (shoeSequence.currentFrame === 44) {
 							shoeSequence.stop();
 							shoeSequence.gotoAndStop(12);
-
 							t.staggerTo(['#spot4', '#spot5', '#spot6'], 0.7, {autoAlpha : 1, scale:1.0, ease:Elastic.easeOut}, 0.05);
-
 							shoeSequence.onFrameChange = null;
 						}
 					}
@@ -228,6 +335,14 @@ function init() {
 
 		$(hit3).click(function(e) {
 			if (shoeSequence.currentFrame != 28) {
+				$('.hit').removeClass('active');
+				$('.hitTxt').removeClass('active');
+				$(hit3).addClass('active');
+				//$(hitTxt3).addClass('active');
+
+				t.to(hitTxt3, 0.3, {y:'-=20', opacity:0, ease:Power3.easeOut, onComplete:function(){ $(hitTxt3).addClass('active'); } });
+				t.to(hitTxt3, 0.3, {y:'+=20', opacity:1, ease:Back.easeOut, delay:'0.3'});
+
 				t.to('.hotspot', 0.3, {autoAlpha : 0, scale:0.0, ease:Power3.easeOut});
 				t.to('.txt', 0.4, {opacity:0, ease:Power2.easeOut});
 				if (shoeSequence.currentFrame === 0) {
@@ -235,9 +350,7 @@ function init() {
 					shoeSequence.onFrameChange = function(e) {
 						if (shoeSequence.currentFrame === 28) {
 							shoeSequence.stop();
-
 							t.staggerTo(['#spot7', '#spot8', '#spot9', '#spot10'], 0.7, {autoAlpha : 1, scale:1.0, ease:Elastic.easeOut}, 0.05);
-
 							shoeSequence.onFrameChange = null;
 						}
 					}
@@ -246,9 +359,7 @@ function init() {
 					shoeSequence.onFrameChange = function(e) {
 						if (shoeSequence.currentFrame === 28) {
 							shoeSequence.stop();
-
 							t.staggerTo(['#spot7', '#spot8', '#spot9', '#spot10'], 0.7, {autoAlpha : 1, scale:1.0, ease:Elastic.easeOut}, 0.05);
-
 							shoeSequence.onFrameChange = null;
 						}
 					}
@@ -329,7 +440,7 @@ function init() {
 		shoeHolder.addChild(shoeSequence);
 		app.stage.addChild(shoeHolder);
 		//shoeSequence.loop = false;
-		$(shoeContainer).css({ top : '50%', left : '50%' , 'transform' : 'translate(-50%, -50%) scale(0.8)' });
+		//$(shoeContainer).css({ top : '50%', left : '50%' , 'transform' : 'translate(-50%, -50%) scale(0.8)' });
 		shoeSequence.animationSpeed = 0.2;
 
 		handleShoe();

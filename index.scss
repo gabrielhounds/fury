@@ -10,28 +10,32 @@ div {
 #main {
 	background-color: #1e354f;
 	overflow: hidden;
+	background-image: url(bg.gif);
+	background-position: center center;
+	background-repeat: no-repeat;
 }
+
+//$(shoeContainer).css({ top : '50%', left : '50%' , 'transform' : 'translate(-50%, -50%) scale(0.8)' });
 
 #shoeContainer {
 	top: 50%;
 	left: 50%;
-	//transform: translate(-50%, -50%);
-}
+	width: 1120px;
+	height: 840px;
+	transform: translate(-50%, -50%) scale(0.8);
 
-#btn3 {
-	border-radius: 50%;
 }
 
 #nav {
-	width: 1000px;
+	width: 1000 / 2048 * 100%;
+	max-width: 1000px;
 	height: 40px;
 	bottom: 80px;
 	left: 50%;
 	transform: translate(-50%);
-	//background-color: fuchsia;
-
 	#line {
 		width: 1000px;
+		width: 100%;
 		height: 4px;
 		top: 18px;
 		background-color: #FFF;
@@ -40,15 +44,19 @@ div {
 
 #hit1 {
 	left: 45px;
+	z-index: 90;
 }
 
 #hit2 {
 	left: 50%;
 	transform: translate(-50%);
+	z-index: 100;
 }
 
 #hit3 {
 	right: 45px;
+	z-index: 95;
+
 }
 
 .hit {
@@ -56,7 +64,57 @@ div {
 	width: 30px;
 	height: 30px;
 	background-color: #cbd036;
+
+	&.active {
+		height: 60px;
+		background-image: url(active_nav.png);
+		background-size: contain;
+		background-color: transparent;
+		top: -20px;
+	}
 }
+
+.hitTxt {
+	width: 258px;
+	height: 36px;
+	background-repeat: no-repeat;
+	background-size: 60%;
+	background-position: center center;
+	pointer-events: none;
+}
+
+#hitTxt1 {
+	top: -60px;
+	left: -64px;
+	background-image: url(hit_txt_1.png);
+
+	&.active {
+		background-image: url(hit_txt_1_active.png);
+	}
+}
+
+#hitTxt2 {
+	top: -60px;
+	left: 50%;
+	transform: translate(-50%);
+	background-image: url(hit_txt_2.png);
+
+	&.active {
+		background-image: url(hit_txt_2_active.png);
+	}
+}
+
+#hitTxt3 {
+	top: -60px;
+	right: -64px;
+	background-image: url(hit_txt_3.png);
+
+	&.active {
+		background-image: url(hit_txt_3_active.png);
+	}
+}
+
+
 
 #logo {
 	//496 88
@@ -77,7 +135,7 @@ div {
 #logo_2 {
 	//496 88
 	bottom: 80px;
-	right: 80px;
+	right: 15px;
 
 	width: 149 / 2048 * 100%;
 	height : 68 / 1200 * 100%;
@@ -91,8 +149,10 @@ div {
 }
 
 #cta {
-	// 411 105
 	top: 200px;
+
+	top: 240 / 1200 * 100%;
+
 	left: 80px;
 
 	width: 411 / 2048 * 100%;
@@ -284,7 +344,86 @@ div {
 	pointer-events: none;
 }
 
+@media only screen and (orientation: portrait) {
 
+	#main {
+		background-position: center center;
+		background-size: 180%;
+	}
+
+	#nav {
+	width: 70%;
+	//max-width: 1000px;
+	left: 50%;
+	transform: translate(-50%);
+		#line {
+			height: 4px;
+			top: 18px;
+			background-color: #FFF;
+		}
+	}
+
+	.hitTxt {
+		width: 258px;
+		height: 36px;
+		background-repeat: no-repeat;
+		background-size: 30%;
+		background-position: center center;
+		pointer-events: none;
+	}
+
+	#shoeContainer {
+		transform: translate(-50%, -50%) scale(0.4);
+	}
+
+	.txt {
+		background-size: 80%;
+	}
+
+	#logo_2 {
+	//496 88
+		bottom: 15px;
+		right: 15px;
+
+		width: 149 / 2048 * 100%;
+		height : 68 / 1200 * 100%;
+
+		max-width: 149px;
+		max-height: 68px;
+
+		background-image: url(logo_2.png);
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: right bottom;
+	}
+
+	#cta {
+		top: 200px;
+
+		top: 220 / 1200 * 100%;
+
+		left: 80px;
+
+		width: 411 / 2048 * 100%;
+		height : 105 / 1200 * 100%;
+
+		max-width: 411px;
+		max-height: 105px;
+
+		background-image: url(cta.png);
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: left top;
+	}
+
+	@media only screen and (max-device-width: 320px) {
+		.hitTxt {
+			background-size: 20%;
+		}
+
+	}
+
+}
 
 
 
